@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+	int n;
+	cin >> n;
+	std::vector<int>arr(n);
+	for (auto &a : arr) {
+		cin >> a;
+	}
+	int xxory = 0;
+	for (auto a : arr) {
+		xxory = (xxory ^ a);
+	}
+	int rmsb = xxory & -xxory;
+	int x = 0, y = 0;
+	for (auto a : arr) {
+		if (!(a & rmsb)) {
+			x = x ^ a;
+		}
+		else
+			y = y ^ a;
+	}
+	cout << x << " " << y << endl;
+	return 0;
+}

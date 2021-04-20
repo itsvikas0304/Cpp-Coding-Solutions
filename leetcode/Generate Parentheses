@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void bracket(vector<string>&ans,int n,int i,int open,int close,string s){
+        if(i==2*n){
+           ans.push_back(s);
+            return;
+        }
+        if(open<n){
+            s+="(";
+            bracket(ans,n,i+1,open+1,close,s);
+             s.pop_back();
+        }
+        if(close<open){
+            s+=")";
+            bracket(ans,n,i+1,open,close+1,s);
+             s.pop_back();
+        }
+       
+        return;
+    }
+    
+    vector<string> generateParenthesis(int n) {
+        vector<string>ans;
+        string s="";
+        bracket(ans,n,0,0,0,s);
+        return ans;
+    }
+};

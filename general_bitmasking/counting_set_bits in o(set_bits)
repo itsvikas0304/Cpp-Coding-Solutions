@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+   int n;
+   cin>>n;
+   int cnt(0);
+   while(n){
+       int rmsb=n&-n;  /// right most set bit;
+       n-=rmsb;
+       cnt++;
+   }
+   cout<<cnt<<endl;
+}

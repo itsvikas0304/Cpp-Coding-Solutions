@@ -1,0 +1,29 @@
+class Solution {
+public:
+     vector<string>ans;
+    void help(map<char,string>&item,int n,int index,string crnt,string &digits){
+        if(index==n){
+            ans.push_back(crnt);
+            return;
+        }
+        for(auto a:item[digits[index]]){
+            help(item,n,index+1,crnt+=a,digits);
+            crnt.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        if(digits.size()==0) return ans;
+        map<char,string>m{
+            {'2',"abc"},
+            {'3',"def"},
+            {'4',"ghi"},
+            {'5',"jkl"},
+            {'6',"mno"},
+            {'7',"pqrs"},
+            {'8',"tuv"},
+            {'9',"wxyz"}
+        };
+        help(m,digits.size(),0,"",digits);
+        return ans;
+    }
+};

@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int maxArea(vector<int>& h) {
+        int global_ans=INT_MIN;
+        int p1=0,p2=h.size()-1;
+        while(p1<p2){
+            global_ans=max(global_ans,min(h[p1],h[p2])*(p2-p1));
+            if(h[p1]<h[p2]) p1++;
+            else if(h[p1]>h[p2]) p2--;
+            else p1++,p2--;
+        }
+        return global_ans;
+    }
+};
